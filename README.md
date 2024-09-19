@@ -1,4 +1,4 @@
-#main.tsx:ในโปรเจกต์ React ทำหน้าที่เป็นจุดเริ่มต้นของแอปพลิเคชัน
+# main.tsx:ในโปรเจกต์ React ทำหน้าที่เป็นจุดเริ่มต้นของแอปพลิเคชัน
 
 1. นำเข้า:
 - React: ใช้สำหรับ JSX
@@ -14,7 +14,7 @@
 - React.StrictMode: เปิดใช้งานโหมด strict สำหรับการพัฒนา
 
 
-#app.tsx: ในโปรเจกต์ React ทำหน้าที่เป็น component หลัก ของแอปพลิเคชัน
+# app.tsx: ในโปรเจกต์ React ทำหน้าที่เป็น component หลัก ของแอปพลิเคชัน
 
 1. State Variables:
 - prices: ข้อมูลราคาของสกุลเงินดิจิทัล
@@ -34,36 +34,36 @@
 - แสดงราคาสกุลเงินและเปรียบเทียบกับราคาก่อนหน้า
 - ใช้ increase และ decrease class เพื่อแสดงการเปลี่ยนแปลงของราคา
 
-#สร้างคำสั่ง Dockerfile เพื่อติดตั้ง Library ที่จำเป็น
+# สร้างคำสั่ง Dockerfile เพื่อติดตั้ง Library ที่จำเป็น
 
-FROM node:latest
+- FROM node:latest
 
-# ติดตั้ง Bun
-RUN curl -fsSL https://bun.sh/install | bash
+ติดตั้ง Bun
+- RUN curl -fsSL https://bun.sh/install | bash
 
-# ตั้งค่า PATH
-ENV PATH="/root/.bun/bin:$PATH"
+ตั้งค่า PATH
+- ENV PATH="/root/.bun/bin:$PATH"
 
-# ตั้งค่า working directory
-WORKDIR /app
+ตั้งค่า working directory
+- WORKDIR /app
 
-# คัดลอกไฟล์ package.json และ bun.lockb
-COPY package.json bun.lockb ./
+คัดลอกไฟล์ package.json และ bun.lockb
+- COPY package.json bun.lockb ./
 
-# ติดตั้ง dependencies
-RUN bun install
+ติดตั้ง dependencies
+- RUN bun install
 
-# คัดลอกโค้ดทั้งหมดไปยัง working directory
-COPY . .
+คัดลอกโค้ดทั้งหมดไปยัง working directory
+- COPY . .
 
-# เปิดพอร์ตที่แอปจะทำงาน
-EXPOSE 3000
+เปิดพอร์ตที่แอปจะทำงาน
+- EXPOSE 3000
 
-# รันคำสั่งที่กำหนดเมื่อ container เริ่มต้น
-CMD ["bun", "run", "dev"]
+รันคำสั่งที่กำหนดเมื่อ container เริ่มต้น
+- CMD ["bun", "run", "dev"]
 
 
-#คำสั่ง upload ขึ้น GitHub
+# คำสั่ง upload ขึ้น GitHub
 
 - git init
 
@@ -75,10 +75,10 @@ CMD ["bun", "run", "dev"]
 
 - git push -u origin master
 
-#คำสั่ง Clone จาก Github ลงที่ AWS EC2 เพื่อรันใช้งานต่อไป
+# คำสั่ง Clone จาก Github ลงที่ AWS EC2 เพื่อรันใช้งานต่อไป
 - git clone https://github.com/nat-jb/ct648-2.git
 
-#คำสั่ง build และ run docker ที่ AWS EC2
+# คำสั่ง build และ run docker ที่ AWS EC2
 
 - docker build -t my-react-app .
 
