@@ -52,6 +52,13 @@ increase: ใช้สำหรับแสดงราคาเพิ่มข�
 decrease: ใช้สำหรับแสดงราคาลดลง
 
 
+git init
+git remote add origin https://github.com/nat-jb/ct648-2.git
+git add .
+git commit -m "Initial commit"
+git push -u origin master
+
+
 
 docker build -t my-react-app .
 
