@@ -52,19 +52,21 @@ increase: ใช้สำหรับแสดงราคาเพิ่มข�
 decrease: ใช้สำหรับแสดงราคาลดลง
 
 คำสั่ง upload ขึ้น GitHub
-git init
 
-git remote add origin https://github.com/nat-jb/ct648-2.git
+- git init
 
-git add .
+- git remote add origin https://github.com/nat-jb/ct648-2.git
 
-git commit -m "Initial commit"
+- git add .
 
-git push -u origin master
+- git commit -m "Initial commit"
+
+- git push -u origin master
 
 
+คำสั่ง build และ run docker ที่ AWS EC2
 
-docker build -t my-react-app .
+- docker build -t my-react-app .
 
-docker run -p 80:3000 my-react-app
+- docker run -p 80:3000 my-react-app
 
