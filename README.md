@@ -14,7 +14,25 @@ main.tsx:
 - React.StrictMode: เปิดใช้งานโหมด strict สำหรับการพัฒนา
 
 
+app.tsx:
 
+1. State Variables:
+- prices: ข้อมูลราคาของสกุลเงินดิจิทัล
+- loading: ตรวจสอบสถานะการโหลด
+- error: ข้อความข้อผิดพลาด
+2. fetchPrices Function:
+- ดึงข้อมูลราคาจาก CoinGecko API
+- แปลงข้อมูลให้ตรงกับรูปแบบที่ใช้
+- จัดการข้อผิดพลาด
+3. useEffect Hook:
+- เรียก fetchPrices เมื่อโหลด component
+- ตั้ง interval เพื่ออัปเดตข้อมูลทุก 20 วินาที
+- ล้าง interval เมื่อ component ถูก unmount
+4. การแสดงผลใน JSX:
+- แสดง "Loading..." ขณะโหลดข้อมูล
+- แสดงข้อผิดพลาดหากมี
+- แสดงราคาสกุลเงินและเปรียบเทียบกับราคาก่อนหน้า
+- ใช้ increase และ decrease class เพื่อแสดงการเปลี่ยนแปลงของราคา
 
 
 คำสั่ง upload ขึ้น GitHub
