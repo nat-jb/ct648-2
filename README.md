@@ -63,6 +63,9 @@ decrease: ใช้สำหรับแสดงราคาลดลง
 
 - git push -u origin master
 
+คำสั่ง Clone จาก Github ลงที่ AWS EC2 เพื่อรันใช้งานต่อไป
+git clone https://github.com/username/repository-name.git
+
 
 คำสั่ง build และ run docker ที่ AWS EC2
 
