@@ -36,7 +36,6 @@
 
 #สร้างคำสั่ง Dockerfile เพื่อติดตั้ง Library ที่จำเป็น
 
-# ใช้ Node.js Image
 FROM node:latest
 
 # ติดตั้ง Bun
