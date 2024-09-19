@@ -1,5 +1,5 @@
 
-main.tsx:
+main.tsx:ในโปรเจกต์ React ทำหน้าที่เป็นจุดเริ่มต้นของแอปพลิเคชัน
 
 1. นำเข้า:
 - React: ใช้สำหรับ JSX
@@ -9,19 +9,20 @@ main.tsx:
 
 2. สร้าง Root:
 - ใช้ ReactDOM.createRoot() เพื่อสร้าง root ที่จะเรนเดอร์แอป
+
 3. การเรนเดอร์:
 - root.render(): เรนเดอร์ App ลงใน DOM ของ element ที่มี id เป็น root
 - React.StrictMode: เปิดใช้งานโหมด strict สำหรับการพัฒนา
 
 
-app.tsx:
+app.tsx: ในโปรเจกต์ React ทำหน้าที่เป็น component หลัก ของแอปพลิเคชัน
 
 1. State Variables:
 - prices: ข้อมูลราคาของสกุลเงินดิจิทัล
 - loading: ตรวจสอบสถานะการโหลด
 - error: ข้อความข้อผิดพลาด
 2. fetchPrices Function:
-- ดึงข้อมูลราคาจาก CoinGecko API
+- ดึงข้อมูลราคาจาก CoinGecko API  https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,litecoin&vs_currencies=usd
 - แปลงข้อมูลให้ตรงกับรูปแบบที่ใช้
 - จัดการข้อผิดพลาด
 3. useEffect Hook:
