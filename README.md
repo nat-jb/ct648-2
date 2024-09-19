@@ -51,11 +51,15 @@ Class ในการกำหนดสี:
 increase: ใช้สำหรับแสดงราคาเพิ่มขึ้น
 decrease: ใช้สำหรับแสดงราคาลดลง
 
-
+คำสั่ง upload ขึ้น GitHub
 git init
+
 git remote add origin https://github.com/nat-jb/ct648-2.git
+
 git add .
+
 git commit -m "Initial commit"
+
 git push -u origin master
 
 
