@@ -1,50 +1,54 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+main.tsx
+โค้ดนี้เป็นจุดเริ่มต้นในการรันแอปพลิเคชัน React โดยทำหน้าที่หลักในการสร้าง root component และทำการเรนเดอร์ (render) component หลักของแอปพลิเคชัน (App) ลงใน DOM ของหน้าเว็บจริง
 
-Currently, two official plugins are available:
+การทำงาน:
+import statements:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+React: นำเข้า React library เพื่อให้สามารถใช้ JSX และการทำงานของ React ได้
+ReactDOM: นำเข้า ReactDOM library ที่ใช้สำหรับการเรนเดอร์ component ลงใน DOM
+App: นำเข้า component หลักของแอปพลิเคชันจากไฟล์ App.tsx ที่จะถูกแสดงในหน้าเว็บ
+./index.css: นำเข้าไฟล์ CSS เพื่อใช้กำหนดสไตล์ในแอปพลิเคชัน
+สร้าง root ด้วย ReactDOM.createRoot:
 
-## Expanding the ESLint configuration
+document.getElementById('root'): ดึง element ที่มี id เป็น root จาก HTML เพื่อเป็นที่เรนเดอร์เนื้อหาของแอป
+ReactDOM.createRoot(): สร้าง "root" ที่จะใช้ในการเรนเดอร์แอปทั้งหมดเข้าไปใน element นั้น
+การเรนเดอร์ App component:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+root.render(): เรียกใช้คำสั่งเพื่อเรนเดอร์ component ที่เราต้องการ ซึ่งในที่นี้คือ component App
+React.StrictMode: ใช้เพื่อเปิดใช้งานโหมด strict ของ React ที่จะช่วยในการตรวจจับข้อผิดพลาดหรือพฤติกรรมที่ไม่ถูกต้องในการพัฒนา (ไม่ได้ใช้ใน production)
+สรุป:
+โค้ดนี้ทำการสร้าง root ของแอปและแสดงผล component หลัก (App) ลงในหน้า HTML โดยจุดที่เรนเดอร์คือ element ที่มี id เป็น root
 
-- Configure the top-level `parserOptions` property like this:
+app.tsx
+React component ชื่อว่า App ที่ทำหน้าที่ในการดึงข้อมูลราคาของสกุลเงินดิจิทัล (Bitcoin, Ethereum, Litecoin) จาก API ของ CoinGecko และแสดงผลข้อมูลเหล่านั้นบนหน้าเว็บ โดยทำงานดังนี้:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+โครงสร้างหลัก:
+State Variables:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+prices: ใช้สำหรับเก็บข้อมูลราคาของสกุลเงินดิจิทัล
+loading: ใช้ตรวจสอบสถานะว่ากำลังดึงข้อมูลอยู่หรือไม่
+error: ใช้สำหรับเก็บข้อความเมื่อมีข้อผิดพลาดเกิดขึ้น
+fetchPrices Function:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+ดึงข้อมูลราคาของ Bitcoin, Ethereum, และ Litecoin จาก API ของ CoinGecko.
+เมื่อได้รับข้อมูลมาแล้ว จะทำการแปลงข้อมูลให้อยู่ในรูปแบบของ CoinPrice ซึ่งประกอบด้วย id (ชื่อของสกุลเงินดิจิทัล), price (ราคาปัจจุบัน), และ prevPrice (ราคาก่อนหน้า).
+ในกรณีที่ไม่สามารถดึงข้อมูลได้หรือมีปัญหา เช่น การตอบสนองของเครือข่ายไม่ถูกต้อง จะจับข้อผิดพลาดและแสดงข้อความ.
+useEffect Hook:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+เมื่อ component โหลดขึ้น จะเรียกใช้ fetchPrices เพื่อดึงข้อมูลราคาสกุลเงินดิจิทัล.
+มีการตั้ง setInterval เพื่อเรียกใช้ fetchPrices ทุก ๆ 20 วินาที เพื่อให้ข้อมูลอัปเดตตามเวลาจริง.
+เมื่อ component ถูก unmount (เช่น เปลี่ยนหน้า) จะทำการล้าง interval เพื่อหยุดการเรียก API.
+การแสดงผลใน JSX:
+
+หาก loading กำลังทำงานอยู่ จะขึ้นข้อความว่า "Loading..."
+หากเกิดข้อผิดพลาด จะแสดงข้อความข้อผิดพลาดที่ error
+หากข้อมูลถูกโหลดสำเร็จ จะแสดงราคาสกุลเงินดิจิทัล และเปรียบเทียบราคาปัจจุบันกับราคาก่อนหน้า:
+หากราคาขึ้น จะเพิ่ม class increase
+หากราคาลด จะเพิ่ม class decrease
+หากไม่มีการเปลี่ยนแปลง จะไม่เพิ่ม class ใด ๆ
+Class ในการกำหนดสี:
+increase: ใช้สำหรับแสดงราคาเพิ่มขึ้น
+decrease: ใช้สำหรับแสดงราคาลดลง
+
+
