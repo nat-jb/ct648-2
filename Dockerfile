@@ -1,8 +1,13 @@
-# ใช้ Bun Official Docker Image
-FROM bun/bun:latest
+FROM node:latest
 
 # ตั้งค่า working directory
 WORKDIR /app
+
+# ติดตั้ง Bun
+RUN curl -fsSL https://bun.sh/install | bash
+
+# ตั้งค่าพาธให้ Bun
+ENV PATH="/root/.bun/bin:${PATH}"
 
 # คัดลอก package.json และ bun.lockb
 COPY package.json bun.lockb ./
