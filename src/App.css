@@ -1,0 +1,76 @@
+/* General Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5; /* Light grey background */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #333;
+}
+
+/* Container for the app */
+.app-container {
+  background: #ffffff; /* White background */
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  max-width: 700px;
+  width: 100%;
+  text-align: center;
+  border: 1px solid #ddd; /* Light border */
+}
+
+/* Title Styles */
+.title {
+  font-size: 2.5rem;
+  color: #1a202c; /* Darker shade for the title */
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Status and Error Styles */
+.status, .error {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+/* Error text color */
+.error {
+  color: #e53e3e; /* Red */
+}
+
+/* Price Container */
+.price-container {
+  margin-top: 20px;
+}
+
+/* Price Styles */
+.price {
+  font-size: 1.5rem;
+  margin: 15px 0;
+  padding: 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  background-color: #f7f9fc; /* Light grey background for price */
+  border: 1px solid #e2e8f0; /* Light border for price */
+}
+
+/* Green for price increase, red for decrease */
+.price.increase {
+  color: #38a169; /* Green */
+}
+
+.price.decrease {
+  color: #e53e3e; /* Red */
+}
+
+/* Price Value */
+.price-value {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #2d3748; /* Darker shade for value */
+}
