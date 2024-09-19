@@ -1,42 +1,18 @@
 
 main.tsx:
 
-นำเข้า:
+1. นำเข้า:
+- React: ใช้สำหรับ JSX
+- ReactDOM: ใช้ในการเรนเดอร์ React component
+- App: Component หลักของแอป
+- ./index.css: ไฟล์ CSS สำหรับสไตล์
 
-React: ใช้สำหรับ JSX
-ReactDOM: ใช้ในการเรนเดอร์ React component
-App: Component หลักของแอป
-./index.css: ไฟล์ CSS สำหรับสไตล์
-สร้าง Root:
+2. สร้าง Root:
+- ใช้ ReactDOM.createRoot() เพื่อสร้าง root ที่จะเรนเดอร์แอป
+3. การเรนเดอร์:
+- root.render(): เรนเดอร์ App ลงใน DOM ของ element ที่มี id เป็น root
+- React.StrictMode: เปิดใช้งานโหมด strict สำหรับการพัฒนา
 
-ใช้ ReactDOM.createRoot() เพื่อสร้าง root ที่จะเรนเดอร์แอป
-การเรนเดอร์:
-
-root.render(): เรนเดอร์ App ลงใน DOM ของ element ที่มี id เป็น root
-React.StrictMode: เปิดใช้งานโหมด strict สำหรับการพัฒนา
-app.tsx:
-
-State Variables:
-
-prices: ข้อมูลราคาของสกุลเงินดิจิทัล
-loading: ตรวจสอบสถานะการโหลด
-error: ข้อความข้อผิดพลาด
-fetchPrices Function:
-
-ดึงข้อมูลราคาจาก CoinGecko API
-แปลงข้อมูลให้ตรงกับรูปแบบที่ใช้
-จัดการข้อผิดพลาด
-useEffect Hook:
-
-เรียก fetchPrices เมื่อโหลด component
-ตั้ง interval เพื่ออัปเดตข้อมูลทุก 20 วินาที
-ล้าง interval เมื่อ component ถูก unmount
-การแสดงผลใน JSX:
-
-แสดง "Loading..." ขณะโหลดข้อมูล
-แสดงข้อผิดพลาดหากมี
-แสดงราคาสกุลเงินและเปรียบเทียบกับราคาก่อนหน้า
-ใช้ increase และ decrease class เพื่อแสดงการเปลี่ยนแปลงของราคา
 
 
 
