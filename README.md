@@ -13,7 +13,6 @@
 - root.render(): เรนเดอร์ App ลงใน DOM ของ element ที่มี id เป็น root
 - React.StrictMode: เปิดใช้งานโหมด strict สำหรับการพัฒนา
 
-
 # app.tsx: ในโปรเจกต์ React ทำหน้าที่เป็น component หลัก ของแอปพลิเคชัน
 
 1. State Variables:
@@ -33,6 +32,13 @@
 - แสดงข้อผิดพลาดหากมี
 - แสดงราคาสกุลเงินและเปรียบเทียบกับราคาก่อนหน้า
 - ใช้ increase และ decrease class เพื่อแสดงการเปลี่ยนแปลงของราคา
+
+# แก้ไขไฟล์ vite.config.ts
+เพิ่มตำสั่งเพื่อใช้ port 3000
+server: {
+    port: 3000, // ตั้งพอร์ตที่ต้องการให้ Vite ใช้
+    host: '0.0.0.0', // เปิดรับการเชื่อมต่อจากเครือข่ายภายนอก
+  },
 
 # สร้างคำสั่ง Dockerfile เพื่อติดตั้ง Library ที่จำเป็น
 
@@ -82,5 +88,5 @@
 
 - docker build -t my-react-app .
 
-- docker run -p 80:3000 my-react-app
+- docker run -d -p 80:3000 my-react-app
 
